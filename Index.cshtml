@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Dojo Survey Index</title>
+        <!-- // In this context '~' refers to the wwwroot folder -->
+        <link rel="stylesheet" href="~/css/style.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body><!-- BODY -->
+    @{
+        ViewData["Title"] = "Home Page";
+    }
+
+    @model Dachi
+    <div class="container"><!-- CONTAINER -->
+        <h1>Welcome to Dojodachi</h1>
+        <table class="table">
+            <tr> 
+                <td>
+                    Fullness: @ViewBag.Billy.Fullness ||
+                    Happiness: @ViewBag.Billy.Happiness ||
+                    Meals: @ViewBag.Billy.Meals ||
+                    Energy: @ViewBag.Billy.Energy ||
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 500px; height:300px;">
+                    
+                    <img src="~/img/ninja.gif" alt="ninja frined would be here" style="width: 100px; height:100px; ">
+                    @if (@ViewBag.Billy.isEndGame == false)
+                    {
+                        <h5 style="color: blue; font-weight: 600;">@ViewBag.interactionResult</h5>
+                    }
+                    else
+                    {
+                        <h5 style="color: red; font-weight: 800;">@ViewBag.interactionResult</h5>
+                    }
+                </td>
+            </tr>
+            @if (@ViewBag.Billy.isEndGame == false)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Home" asp-action="Interaction" asp-route-id="Feed">Feed</a>
+                        <a asp-controller="Home" asp-action="Interaction" asp-route-id="Play">Play</a>
+                        <a asp-controller="Home" asp-action="Interaction" asp-route-id="Work">Work</a>
+                        <a asp-controller="Home" asp-action="Interaction" asp-route-id="Sleep">Sleep</a>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Home" asp-action="Interaction" asp-route-id="Restart">Restart</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div><!-- CONTAINER -->
+</body><!-- BODY -->
+</html>
